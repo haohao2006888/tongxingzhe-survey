@@ -1,0 +1,37 @@
+{
+  "surveyType": "dingkequn-public",
+  "userName": "陈浩",
+  "contact": "",
+  "time": "2026-06-12T17:29:07.181Z",
+  "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.74(0x18004a2d) NetType/WIFI Language/zh_CN",
+  "bio": "",
+  "part1_text": "",
+  "part2_text": "",
+  "part3_text": "",
+  "part4_text": "",
+  "cq1": "一般",
+  "cq2": "道德经",
+  "cq3": "很少",
+  "cq4": "经常",
+  "cq8": "有点兴趣",
+  "cq9": "5000-15000",
+  "cq10": "男",
+  "cq11": "35-44",
+  "cq12": "新一线",
+  "cq13": "管理者",
+  "cq5": [
+    "抄经",
+    "打坐",
+    "音频"
+  ],
+  "cq6": [
+    "手在做心没跟上",
+    "过几天不行"
+  ],
+  "cq7": [
+    "随身东西",
+    "自动提醒"
+  ],
+  "_received": "2026-06-12T17:29:09.845Z",
+  "id": "2026-06-12T17-29-07-181_陈浩_3n2"
+}
