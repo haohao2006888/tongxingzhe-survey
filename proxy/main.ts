@@ -110,7 +110,7 @@ Deno.serve(async (req) => {
     }
   }
 
-  // ── POST /stt: Baidu speech-to-text ──
+  // ── POST /stt: Baidu speech-to-text (v2) ──
   if (url.pathname === "/stt" && req.method === "POST") {
     try {
       const body = await req.json();
