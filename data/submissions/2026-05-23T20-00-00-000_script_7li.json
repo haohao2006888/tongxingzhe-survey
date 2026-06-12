@@ -1,0 +1,7 @@
+{
+  "surveyType": "_xss_",
+  "userName": "<script>alert(1)</script>",
+  "time": "2026-05-23T20:00:00.000Z",
+  "_received": "2026-06-12T14:08:24.486Z",
+  "id": "2026-05-23T20-00-00-000_script_7li"
+}
