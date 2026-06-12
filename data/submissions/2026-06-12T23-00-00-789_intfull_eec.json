@@ -1,0 +1,11 @@
+{
+  "userName": "int_full_test",
+  "contact": "13911112222",
+  "time": "2026-06-12T23:00:00.789Z",
+  "bio": "完整集成测试",
+  "part1_text": "P1测试内容",
+  "part2_text": "P2测试内容",
+  "part3_text": "P3测试内容",
+  "_received": "2026-06-12T12:18:30.933Z",
+  "id": "2026-06-12T23-00-00-789_intfull_eec"
+}
