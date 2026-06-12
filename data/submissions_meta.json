@@ -342,5 +342,11 @@
     "time": "2026-06-13T11:10:04.000Z",
     "bio": "Rapid submit #4",
     "id": "2026-06-13T11-10-04-000_EdgeTest_xz6"
+  },
+  {
+    "userName": "EdgeTest_1781267893_emoji",
+    "time": "2026-06-13T11:20:00.000Z",
+    "bio": "emoji test 😀🎉✨☕",
+    "id": "2026-06-13T11-20-00-000_EdgeTest_zi9"
   }
 ]
