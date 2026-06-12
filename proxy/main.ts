@@ -41,7 +41,10 @@ function b64ToUtf8(str: string): string {
 function makeId(s: Record<string, unknown>): string {
   const ts = (s.time || s._received || new Date().toISOString()) as string;
   const name = ((s.userName || s.name || "?") as string).slice(0, 8).replace(/[^a-zA-Z\u4e00-\u9fff0-9]/g, "");
-  return ts.replace(/[:.]/g, "-").slice(0, 19) + "_" + name;
+  // Use full timestamp including ms + random suffix to prevent collisions
+  const clean = ts.replace(/[:.]/g, "-").slice(0, 23); // keep milliseconds
+  const rand = Math.random().toString(36).slice(2, 5);
+  return clean + "_" + name + "_" + rand;
 }
 
 /** Build text-only meta entry (no audio) */
@@ -242,13 +245,9 @@ Deno.serve(async (req) => {
     const payload = await req.json();
     await migrateIfNeeded();
 
-    // 1. Create individual file with full data (including audio)
     const id = makeId(payload);
-    const fullEntry = { ...payload, _received: new Date().toISOString(), id };
-    await ghPut(subApi(id), JSON.stringify(fullEntry, null, 2), null,
-      `📝 ${payload.userName || payload.name || "?"}`);
 
-    // 2. Read meta, append text-only entry
+    // 1. Read meta, append text-only entry (do this FIRST — meta is source of truth)
     let metaSha: string;
     let meta: Record<string, unknown>[];
     try {
@@ -261,9 +260,18 @@ Deno.serve(async (req) => {
     }
     meta.push(toMeta(payload));
 
-    // 3. Write updated meta
+    // 2. Write updated meta
     await ghPut(META_API, JSON.stringify(meta, null, 2), metaSha,
       `📝 ${payload.userName || payload.name || "?"} (${new Date().toISOString().slice(0, 10)})`);
+
+    // 3. Create individual file with full data (including audio) — best-effort
+    const fullEntry = { ...payload, _received: new Date().toISOString(), id };
+    try {
+      await ghPut(subApi(id), JSON.stringify(fullEntry, null, 2), null,
+        `📝 ${payload.userName || payload.name || "?"}`);
+    } catch (e) {
+      console.warn("Individual file creation failed (meta already saved):", e);
+    }
 
     return json({ success: true, count: meta.length });
   } catch (e: unknown) {
