@@ -168,7 +168,9 @@ Deno.serve(async (req) => {
         const data = await ghGet(META_API);
         const meta: Record<string, unknown>[] = data.content
           ? JSON.parse(b64ToUtf8(data.content)) : [];
-        return json(meta);
+        // Filter: only return entries that have userName or name (real submissions)
+        const clean = meta.filter((m: any) => m.userName || m.name);
+        return json(clean);
       } catch { return json([]); } // No data yet
     } catch (e: unknown) {
       return json({ error: e instanceof Error ? e.message : String(e) }, 500);
