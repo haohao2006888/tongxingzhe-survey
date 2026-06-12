@@ -951,5 +951,18 @@
     "part1_text": "P1",
     "id": "2026-02-02T10-00-00-000_MERGE17_kx3",
     "part4_text": "合并验证批注✅"
+  },
+  {
+    "surveyType": "dingkequn-founder",
+    "userName": "截断测试",
+    "time": "2026-05-23T23:00:00.000Z",
+    "bio": "",
+    "part1_text": "",
+    "part4_text": "",
+    "part5_text": "",
+    "part6_text": "",
+    "cq_audio_text": "",
+    "info_audio_text": "",
+    "id": "2026-05-23T23-00-00-000_截断测试_9pi"
   }
 ]
